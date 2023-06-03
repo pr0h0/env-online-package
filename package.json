@@ -1,0 +1,26 @@
+{
+  "name": "env-online",
+  "version": "0.0.1",
+  "description": "Fetch env variables from online repository",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pr0h0/env-online-package.git"
+  },
+  "keywords": [
+    "env",
+    "environment",
+    "varables",
+    "repostory",
+    "remote"
+  ],
+  "author": "pr0h0 <abdulahproho@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pr0h0/env-online-package/issues"
+  },
+  "homepage": "https://github.com/pr0h0/env-online-package#readme"
+}
