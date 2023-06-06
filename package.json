@@ -1,5 +1,5 @@
 {
-  "name": "env-online",
+  "name": "remotenv",
   "version": "0.0.1",
   "description": "Fetch env variables from online repository",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pr0h0/env-online-package.git"
+    "url": "git+https://github.com/pr0h0/remotenv.git"
   },
   "keywords": [
     "env",
@@ -20,7 +20,7 @@
   "author": "pr0h0 <abdulahproho@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pr0h0/env-online-package/issues"
+    "url": "https://github.com/pr0h0/remotenv/issues"
   },
-  "homepage": "https://github.com/pr0h0/env-online-package#readme"
+  "homepage": "https://github.com/pr0h0/remotenv#readme"
 }
