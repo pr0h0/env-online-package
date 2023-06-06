@@ -1,7 +1,7 @@
 const fs = require("fs");
-const http = require("http");
+const https = require("https");
 
-const URL = "http://localhost:3000/api/fetch";
+const URL = "https://remotenv.online/api/fetch";
 
 class RemoteEnv {
   constructor(API_KEY) {
@@ -35,7 +35,7 @@ class RemoteEnv {
 
   async #get(url) {
     return new Promise((resolve, reject) => {
-      http
+      https
         .get(url, (res) => {
           let data = "";
           res.on("data", (chunk) => {
