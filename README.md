@@ -1,4 +1,4 @@
-# remote-env
+# remotenv
 
 ####Fetch env variables from the online repository
 
@@ -17,7 +17,7 @@ To
 
 and let this package do rest for you
 
-1. First register on [remotenv](https://remotenv.online)
+1. First register on [remotenv](https://www.remotenv.online)
 2. Then create a new collection, that will represent your app
 3. Then create a new environment and fill it with all variables
 4. After that create new API key and use it to fetch all other keys
@@ -38,17 +38,17 @@ You can use applyLive and store them to process.env and pass calback? to be exec
 Or you can store them to file and use them later with dotenv.config().
 Default filename is .env.name (where name is name of the environment on website)
 
-    const { error } = env.saveToFile(filename);
+    const { error, message } = env.saveToFile(filename);
 
 #####Also there are two methods available if you want to do it manually
 
 Returns json object with all variables
 
-    env.getJson();
+    const { name, values } = env.getJson();
 
 Returns raw string with all variables  key=value\n...
 
-    env.getRaw();
+    const values = env.getRaw();
 
 ####Example usage with dotenv
 

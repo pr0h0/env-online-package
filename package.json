@@ -1,6 +1,6 @@
 {
   "name": "remotenv",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Fetch env variables from online repository",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "remote"
   ],
   "author": "pr0h0 <abdulahproho@gmail.com>",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/pr0h0/remotenv/issues"
   },
