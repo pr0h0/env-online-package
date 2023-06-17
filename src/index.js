@@ -3,6 +3,18 @@ const https = require("https");
 
 const URL = "https://remotenv.online/api/fetch";
 
+/**
+ * @typedef {Object} RemoteEnvData
+ * @property {string} name - Environment name
+ * @property {Array<{name: string, value: string}>} values - Environment values
+ */
+
+/**
+ * @typedef {Object} RemoteEnvError
+ * @property {boolean} error - Error status
+ * @property {string} message - Error message
+ */
+
 class RemoteEnv {
   constructor(API_KEY) {
     if (!API_KEY) {
@@ -16,7 +28,10 @@ class RemoteEnv {
   #data = null;
   #API_KEY = null;
 
-  async fetchEnvs() {
+  /**
+   * @returns {Promise<RemoteEnvError>}
+   */
+  async fetchEnvironment() {
     const url = `${URL}?API_KEY=${this.#API_KEY}`;
     try {
       const res = await this.#get(url);
@@ -47,25 +62,39 @@ class RemoteEnv {
     });
   }
 
+  /**
+   * @returns {RemoteEnvData}
+   */
   getJson() {
     return { values: [...this.#data.values], name: this.#data.name };
   }
 
+  /**
+   * @returns {string} - key=value\n string
+   */
   getRaw() {
-    const { values: json } = this.getJson();
+    const { values } = this.getJson();
 
-    return json.map(({ name, value }) => `${name}=${value}`).join("\n");
+    return values.map(({ name, value }) => `${name}=${value}`).join("\n");
   }
 
+  /**
+   * @param {Function} cb - Callback after environment applied
+   * @returns {void}
+   */
   applyLive(cb) {
     const { values: json } = this.getJson();
     json.forEach(({ name, value }) => {
       process.env[name] = value;
     });
-    if (cb) cb();
+    if (cb && typeof cb === 'function') cb();
   }
 
-  saveToFile(path) {
+  /**
+   * @param {string} path - Path to save file
+   * @returns {Promise<RemoteEnvError>}
+   */
+  async saveToFile(path) {
     try {
       const _path =
         path || `${process.cwd()}/.env.${this.#data.name?.toLowerCase()}`;
