@@ -1,6 +1,6 @@
 # remotenv
 
-####Fetch env variables from the online repository
+#### Fetch env variables from the online repository
 
 Switch your **\.env** file from
 
@@ -20,37 +20,35 @@ and let this package do rest for you
 1. First register on [remotenv](https://www.remotenv.online)
 2. Then create a new collection, that will represent your app
 3. Then create a new environment and fill it with all variables
-4. After that create new API key and use it to fetch all other keys
+4. After that create a new API key and use it to fetch all other keys
 
-####Example usage
+#### Example usage
 
     const RemoteEnv = require('remotenv');
     const env = new RemoteEnv(REMOTE_ENV_API_KEY);
 
-Fetch remote variables to local object, if there is error, message will contain error message
+Fetch remote variables to a local object, if there is an error, a message will contain an error message
 
     const { error, message } = env.fetchEnvs();
 
-You can use applyLive and store them to process.env and pass calback? to be executed after that
+You can use applyLive and store them to process.env and pass [callback] to be executed after that
 
     env.applyLive(() => app.listen(process.env.PORT, ...));
 
 Or you can store them to file and use them later with dotenv.config().
-Default filename is .env.name (where name is name of the environment on website)
+The default filename is .env.name (where name is the name of the environment on the website)
 
     const { error, message } = env.saveToFile(filename);
+Also, there are two methods available if you want to do it manually
 
-#####Also there are two methods available if you want to do it manually
-
-Returns json object with all variables
+Returns JSON object with all variables
 
     const { name, values } = env.getJson();
-
-Returns raw string with all variables  key=value\n...
+Returns a raw string with all variables  key=value\n...
 
     const values = env.getRaw();
 
-####Example usage with dotenv
+#### Example usage with dotenv
 
       const RemoteEnv = require('remotenv');
       const dotenv = require('dotenv');
