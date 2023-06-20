@@ -87,7 +87,7 @@ class RemoteEnv {
     json.forEach(({ name, value }) => {
       process.env[name] = value;
     });
-    if (cb && typeof cb === 'function') cb();
+    if (cb && typeof cb === "function") cb();
   }
 
   /**

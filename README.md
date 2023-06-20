@@ -29,7 +29,7 @@ and let this package do rest for you
 
 Fetch remote variables to a local object, if there is an error, a message will contain an error message
 
-    const { error, message } = env.fetchEnvs();
+    const { error, message } = await env.fetchEnvs();
 
 You can use applyLive and store them to process.env and pass [callback] to be executed after that
 
@@ -38,29 +38,35 @@ You can use applyLive and store them to process.env and pass [callback] to be ex
 Or you can store them to file and use them later with dotenv.config().
 The default filename is .env.name (where name is the name of the environment on the website)
 
-    const { error, message } = env.saveToFile(filename);
+    const { error, message } = await env.saveToFile(filename);
+
 Also, there are two methods available if you want to do it manually
 
 Returns JSON object with all variables
 
     const { name, values } = env.getJson();
-Returns a raw string with all variables  key=value\n...
+
+Returns a raw string with all variables key=value\n...
 
     const values = env.getRaw();
 
 #### Example usage with dotenv
 
       const RemoteEnv = require('remotenv');
-      const dotenv = require('dotenv');
       const env = new RemoteEnv(REMOTE_ENV_API_KEY);
 
-      const { error, message } = env.saveToFile('.env.environment');
-      // handle error
+      // handle if any error
+      const { error, message } = await env.fetchEnvs();
 
-      dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
->
-now you can use process.env to access environmental variables as usual
+      await env.saveToFile('.env.example');
+
+      // later in your app
+      const dotenv = require('dotenv');
+      dotenv.config({ path: '.env.example' });
+
+> Now you can use process.env to access environmental variables as usual
 
 > All contributions are welcome
+> Currently there is only npm package, if you make package for diferent language, let me know to list you here
 
-
+> Contact at: [contact@remotenv.online](mailto:contact@remotenv.online)

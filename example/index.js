@@ -20,7 +20,7 @@ const RemoteEnv = require("../src");
 
     {
       // or save environment to file
-      const { error, message } = await env.saveToFile('.env.example');
+      const { error, message } = await env.saveToFile(".env.example");
       if (error) {
         // handle error and display message
       }
